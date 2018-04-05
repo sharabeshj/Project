@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api',
+    'webpack_loader',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -120,8 +124,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 WEBPACK_LOADER = {
-    'DEFAULT' : {
-        'BUNDLE_DIR_NAME' : 'bundles/',
-        'STATS_FILE' : os.path.join(BASE_DIR,'webpack-stats.dev.json'),
+    'DEFAULT': {
+            'BUNDLE_DIR_NAME': 'bundles/',
+            'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.dev.json'),
         }
-    }
+}

@@ -5,19 +5,23 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth import login as auth_login,authenticate
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse
 from api.permissions import IsOwnerOrReadOnly
 from rest_framework import permissions
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
+@csrf_exempt
 def login(request):
 	if request.method == "POST":
-		username = request.POST['username']
-		password = request.POST['password']
+		username = request.POST.get('username')
+		password = request.POST.get('password')
 		user = authenticate(username = username, password = password)
 		if user is not None:
 			if user.is_active:
 				auth_login(request.user)
-				return JsonResponse({'status' : 'ok'})
+				return HttpResponse("ok")
+		else:
+			return HttpResponse("not ok")		
 
 
 class ProfileList(APIView):

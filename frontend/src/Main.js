@@ -9,15 +9,20 @@ import Logout from './Logout'
 // and /schedule routes will match any pathname that starts
 // with /roster or /schedule. The / route will only match
 // when the pathname is exactly the string "/"
-const Main = () => (
-  <main>
-    <Switch>
+export default class Main extends React.Component {
+	constructor(props) {
+		super(props)
+	}
+	render() {
+		return (
+			<div>
+			<main>
+				<Switch>
       <Route exact path='/' component={Home}/>
       <Route path='/edit' component={Edit}/>
       <Route path='/logout' component={Logout}/>
     </Switch>
-  </main>
-)
-
-export default Main
-
+    </main>
+			</div>);
+	}
+}

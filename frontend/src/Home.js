@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
-export default class Home extends React.sComponent {
+export default class Home extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			data : []
 		}
@@ -12,7 +12,7 @@ export default class Home extends React.sComponent {
 		() => this.loadDataFromServer();
 	}
 	loadDataFromServer(){
-		axios.get('http://127.0.0.1:8000/profile/'+this.props.user)
+		axios.get('http://127.0.0.1:8000/profile/'+this.props.user+'/')
 	      .then(res => {
 	        console.log(res);
 	        console.log(res.data);
